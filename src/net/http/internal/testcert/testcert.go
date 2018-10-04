@@ -30,6 +30,7 @@ cxv3HdkLW59i/0SlJSrNnWdfZ19oTcS+6PtLoVyISgtyN6DpkKpdG1cOkW3Cy2P2
 grw/ZQTTIVjjh4JBSW3WyWgNo/ikC1lrVxzl4iPUGptxT36Cr7Zk2Bsg0XqwbOvK
 5d+NTDREkSnUbie4GeutujmX3Dsx88UiV6UY/4lHJa6I5leHUNOHahRbpbWeOfs/
 WkBKOclmOV2xlTVuPw==
+
 -----END CERTIFICATE-----`)
 
 // LocalhostKey is the private key for LocalhostCert.
