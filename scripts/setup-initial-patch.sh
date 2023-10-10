@@ -9,6 +9,7 @@ function cleanup() {
     # shellcheck disable=SC2181
     if [ "0" != "${?}" ]; then
         cd "${ROOT}"
+        git reset go
         rm -rf go
     fi
 }
