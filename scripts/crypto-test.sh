@@ -67,8 +67,16 @@ run_native_fips_test_suite() {
     if [[ "$suite" == "crypto" ]]; then
       notify_running ${mode} "crypto-native-fips"
       quiet pushd ${GOROOT}/src/crypto
+      # Relative wildcards conflict with the FIPS snapshot overlay.
+      local crypto_packages
+      crypto_packages=$($GO list crypto/...)
+      crypto_packages=$(printf '%s\n' "$crypto_packages" | grep -v '^crypto/tls$')
+      if [[ -z "$crypto_packages" ]]; then
+        echo "FAIL: No crypto packages found"
+        exit 1
+      fi
       GOLANG_NATIVE_HOSTFIPS_OVERRIDE=1 \
-        $GO test -count=1 $($GO list ./... | grep -v tls) $VERBOSE
+        $GO test -count=1 $crypto_packages $VERBOSE
       quiet popd
     elif [[ "$suite" == "tls" ]]; then
       notify_running ${mode} "tls-native-fips"
